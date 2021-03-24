@@ -9,7 +9,7 @@ Install unicorn and run `uvicorn app:app --reload`
 Clones `master` branch. https://podility.herokuapp.com/
 
 # Contributors
-William Ansehl
-Brendon Eby
-Renpin Luo
+William Ansehl <br />
+Brendon Eby <br />
+Renpin Luo <br />
 Luke Salamone
