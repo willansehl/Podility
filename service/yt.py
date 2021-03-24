@@ -8,8 +8,8 @@ class yt():
             self.keys: (list of strings) a list of youtube api keys
             self.youtube: the youtube api to submit requests to
         '''
-        key = '' # insert User API Key Here from Microsoft Academic API (temporary solution until Podility is further built out
-        self.keys = ['']
+        user_key = '' # insert User API Key Here from Microsoft Academic API (temporary solution until Podility is further built out
+        self.keys = [user_key]
         self.youtube = build('youtube', 'v3', developerKey=self.keys[0])
 
 
