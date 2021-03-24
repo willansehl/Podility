@@ -1,0 +1,388 @@
+html, body {
+  margin: 0;
+  background: #222;
+  font-family: Helvetica, sans-serif;
+}
+
+header {
+  height: 60px;
+  background: #333;
+}
+header h1 {
+  color: gray;
+  margin: 0;
+  padding: 15px;
+  padding-left: 60px;
+}
+
+main {
+  height: calc(100% - 60px);
+  display: flex;
+}
+
+overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: none;
+  background-color: #1f1f1f;
+}
+overlay input {
+  background-color: #111;
+  border: none;
+  outline: none;
+  color: #fff;
+  padding: 15px;
+  width: calc(100% - 20px);
+  border-radius: 20px;
+  float: left;
+  position: relative;
+  margin: 10px;
+}
+overlay button {
+  position: relative;
+  display: block;
+  background-color: #8841a5;
+  border-bottom: 5px solid #5b2c6d !important;
+  margin: 30px auto;
+}
+overlay span {
+  text-decoration: underline;
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  color: #fff;
+}
+overlay span:hover {
+  text-decoration: none;
+}
+
+#left, #middle, #right {
+  display: inline-block;
+}
+
+#left {
+  height: 100%;
+  width: 300px;
+  overflow: auto;
+  position: relative;
+  background-color: #1f1f1f;
+}
+#left .queue {
+  display: block;
+  padding-bottom: 100px;
+  padding-top: 20px;
+}
+#left .video {
+  color: #fff;
+  display: flex;
+  padding: 6px;
+  max-height: 70px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+#left .video:hover {
+  background-color: #ffffff05;
+}
+#left .video:active {
+  background-color: #0003;
+}
+#left .video .img {
+  width: 102px;
+  height: 62px;
+  display: inline-block;
+  background-size: contain;
+}
+#left .video .text-holder {
+  display: inline-block;
+  width: 148px;
+  font-size: 14px;
+  padding: 10px;
+  padding-right: 45px;
+  position: relative;
+  float: right;
+}
+#left .video .text-holder span {
+  text-decoration: none;
+  color: #fff;
+  position: absolute;
+  top: 0;
+}
+#left .video .votes-holder {
+  position: absolute;
+  right: 10px;
+  opacity: 0.1;
+}
+#left .video .votes-holder div {
+  border-radius: 20px;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  line-height: 22px;
+  padding: 7px;
+  cursor: pointer;
+}
+#left .video .votes-holder .upvote {
+  background: #7fa650;
+  border-radius: 15px 15px 0 0;
+}
+#left .video .votes-holder .downvote {
+  background: #a54141;
+  border-radius: 0 0 15px 15px;
+  line-height: 15px;
+}
+#left .video:hover .votes-holder {
+  opacity: 1;
+}
+#left .button-holder {
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  height: 90px;
+  width: inherit;
+}
+#left .button-holder button {
+  position: relative;
+  display: block;
+  background-color: #8841a5;
+  border-bottom: 5px solid #5b2c6d;
+  margin-left: auto;
+  margin-right: auto;
+}
+#left .button-holder button:hover {
+  box-shadow: 0 4px 30px 5px #8841a5;
+}
+
+#middle {
+  height: 100%;
+  width: calc(100% - 600px);
+  position: relative;
+}
+#middle .video-holder {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 30px);
+}
+#middle .video-holder overlay {
+  display: block;
+  background-color: #0000;
+  user-select: none;
+}
+#middle .video-holder overlay .like-skip {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#middle .video-holder overlay .like-skip .like-holder, #middle .video-holder overlay .like-skip .skip-holder {
+  flex-grow: 1;
+  position: relative;
+}
+#middle .video-holder overlay .like-skip div.like, #middle .video-holder overlay .like-skip div.skip {
+  display: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 139px;
+  opacity: 0.2;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin: 0;
+  position: absolute;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+#middle .video-holder overlay .like-skip div.like {
+  right: 20px;
+}
+#middle .video-holder overlay .like-skip div.skip {
+  left: 20px;
+}
+#middle .video-holder overlay .like-skip div.like:hover, #middle .video-holder overlay .like-skip div.skip:hover {
+  opacity: 1;
+}
+#middle .video-holder overlay .like-skip div.like:active, #middle .video-holder overlay .like-skip div.skip:active {
+  opacity: 0.9 !important;
+}
+#middle .video-holder overlay:hover div.like, #middle .video-holder overlay:hover div.skip {
+  display: block;
+}
+#middle .video-holder overlay div.like {
+  background-image: url("/static/img/thumbsup.png");
+}
+#middle .video-holder overlay div.skip {
+  background-image: url("/static/img/thumbsdown.png");
+}
+#middle .video-holder span {
+  color: #fff;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#middle .video-holder iframe {
+  position: absolute;
+  border: none;
+  z-index: 5;
+}
+#middle .video-actions {
+  height: 30px;
+  display: flex;
+  position: relative;
+}
+#middle .video-actions .vote-battle {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  z-index: 20;
+}
+#middle .video-actions .vote-battle div {
+  height: 100%;
+  flex-grow: 1;
+}
+#middle .video-actions .vote-battle div.likes {
+  background-color: #7fa650;
+}
+#middle .video-actions .vote-battle div.likes.glow {
+  box-shadow: 0 4px 30px 5px #7fa650;
+}
+#middle .video-actions .vote-battle div.skips {
+  background-color: #a54141;
+}
+#middle .video-actions .vote-battle div.skips.glow {
+  box-shadow: 0 4px 30px 5px #a54141;
+}
+#middle .video-actions .like-skip {
+  height: calc(100% - 30px);
+  position: absolute;
+  left: 0;
+  top: 30px;
+  right: 0;
+  display: flex;
+}
+#middle .video-actions .like-skip .like-holder {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#middle .video-actions .like-skip .like-holder button {
+  background-color: #7fa650;
+  border-bottom: 5px solid #4f6732;
+}
+#middle .video-actions .like-skip .skip-holder {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#middle .video-actions .like-skip .skip-holder button {
+  background-color: #a54141;
+  border-bottom: 5px solid #6d2c2c;
+}
+#right {
+  position: relative;
+  height: 100%;
+  width: 350px;
+  float: right;
+  overflow: auto;
+  background-color: #1f1f1f;
+}
+#right #messages {
+  height: calc(100% - 60px);
+}
+#right .msg, #right section {
+  padding: 10px;
+  color: gray;
+}
+#right .msg > p, #right section > p {
+  font-size: 14px;
+  margin: 0px;
+}
+#right .msg .username, #right section .username {
+  color: #bbb;
+  font-weight: bold;
+}
+#right .msg .content, #right section .content {
+  color: #fff;
+}
+#right #send-messages {
+  height: 60px;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+#right #send-messages input {
+  background-color: #111;
+  border: none;
+  outline: none;
+  color: #fff;
+  padding: 15px;
+  width: calc(100% - 20px);
+  border-radius: 20px;
+  float: left;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0 10px;
+}
+button.large {
+  font-size: 30px;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding: 20px;
+  min-width: 120px;
+  cursor: pointer;
+  text-shadow: 2px 2px 1px #0006;
+}
+button.large:active {
+  margin-top: 10px;
+}
+
+.overlay {
+  display: block;
+  position: absolute;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+.overlay .overlay_box {
+  display: block;
+  position: relative;
+  margin: auto;
+  top: 20vh;
+  width: 400px;
+  height: auto;
+  background: gray;
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+}
+.overlay input {
+  display: block;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: none;
+  min-width: 80px;
+}
+
+/*# sourceMappingURL=style.css.map */
